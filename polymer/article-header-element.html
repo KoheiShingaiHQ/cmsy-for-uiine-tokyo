@@ -1,0 +1,76 @@
+<link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
+
+<dom-module id="article-header-element">
+  <template>
+    <style>
+      :host * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+      }
+      :host section {
+        padding: 12px 26px;
+        width: 100%;
+      }
+      :host section h1 {
+        text-align: left;
+        font-size: 43px;
+        letter-spacing: -.5px;
+        line-height: 64px;
+        margin: 0px;
+        font-family: "Roboto", sans-serif;
+        font-weight: 200;
+        color: rgba(0, 0, 0, 0.45);
+        border-bottom: 1px solid #e6e6e6;
+      }
+      :host section.en h1 {
+        font-family: "Roboto", sans-serif;
+      }
+      :host section.ja h1 {
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: 300;
+      }
+      :host section h1:first-letter {
+        text-transform: capitalize;
+      }
+      @media only screen and (max-width: 840px) {
+        :host section.en h1 {
+          font-size: 31px;
+          line-height: 45px;
+          padding-bottom: 8px;
+        }
+        :host section.ja h1 {
+          font-size: 31px;
+          line-height: 45px;
+          padding-bottom: 8px;
+        }
+      }
+    </style>
+    <section id="section" class$="en">
+      <h1 id="title">Something</h1>
+    </section>
+  </template>
+  <script>
+    /**
+     * `article-header-element`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class ArticleHeaderElement extends Polymer.Element {
+      static get is() { return 'article-header-element'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'article-header-element'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(ArticleHeaderElement.is, ArticleHeaderElement);
+  </script>
+</dom-module>

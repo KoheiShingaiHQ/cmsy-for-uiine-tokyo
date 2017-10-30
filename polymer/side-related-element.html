@@ -1,0 +1,81 @@
+<link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/polymer/side-related-content-element.html">
+
+<dom-module id="side-related-element">
+  <template>
+    <style>
+      :host * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+      }
+      :host section {
+        text-align: left;
+      }
+      :host h2 {
+        margin: 0px;
+        margin-bottom: 14px;
+        color: rgba(0, 0, 0, 0.54);
+        font-size: 14px;
+        font-weight: 400;
+        font-family: 'Roboto', sans-serif;
+      }
+      :host h2.en {
+        font-family: 'Roboto', sans-serif;
+      }
+      :host h2.ja {
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: 300;
+      }
+      :host section.en h2.en {
+        display: block;
+      }
+      :host section.en h2.ja {
+        display: none;
+      }
+      :host section.ja h2.en {
+        display: none;
+      }
+      :host section.ja h2.ja {
+        display: block;
+      }
+      :host ul {
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+      }
+      @media only screen and (max-width: 840px) {  
+      }
+    </style>
+    <section class="en">
+      <h2 class="en">Related</h2>
+      <h2 class="ja">関連</h2>
+      <ul id="related">
+        <side-related-content-element></side-related-content-element>
+      </ul>
+    </section>
+  </template>
+  <script>
+    /**
+     * `side-related-element`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class SideRelatedElement extends Polymer.Element {
+      static get is() { return 'side-related-element'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'side-related-element'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(SideRelatedElement.is, SideRelatedElement);
+  </script>
+</dom-module>

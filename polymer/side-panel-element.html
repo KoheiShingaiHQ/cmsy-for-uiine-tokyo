@@ -1,0 +1,57 @@
+<link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/polymer/side-language-element.html">
+<link rel="import" href="/polymer/side-related-element.html">
+
+<dom-module id="side-panel-element">
+  <template>
+    <style>
+      :host * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+      }
+      :host section {
+        position: absolute;
+        right: 0px;
+        margin: 0px;
+        margin-top: 0px;
+        width: 256px;
+        height: calc(100% - 151px);
+        padding: 20px 20px 20px 24px;
+        border-left: 1px solid #e6e6e6;
+      }
+      @media only screen and (max-width: 840px) {
+        :host section {
+          display: none;
+        }
+      }
+    </style>
+    <section id="side">
+      <side-language-element></side-language-element>
+      <side-related-element></side-related-element>
+    </section>
+  </template>
+  <script>
+    /**
+     * `side-panel-element`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class SidePanelElement extends Polymer.Element {
+      static get is() { return 'side-panel-element'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'side-panel-element'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(SidePanelElement.is, SidePanelElement);
+  </script>
+</dom-module>

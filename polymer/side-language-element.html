@@ -1,0 +1,249 @@
+<link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
+
+<dom-module id="side-language-element">
+  <template>
+    <style>
+      :host * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+      }
+      :host section {
+        text-align: left;
+      }
+      :host h2 {
+        margin: 0px;
+        margin-bottom: 14px;
+        color: rgba(0, 0, 0, 0.54);
+        font-size: 14px;
+        font-weight: 400;
+        font-family: 'Roboto', sans-serif;
+      }
+      :host h2.en {
+        font-family: 'Roboto', sans-serif;
+      }
+      :host h2.ja {
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: 300;
+      }
+      :host section.en h2.en {
+        display: block;
+      }
+      :host section.en h2.ja {
+        display: none;
+      }
+      :host section.ja h2.en {
+        display: none;
+      }
+      :host section.ja h2.ja {
+        display: block;
+      }
+      :host .selector {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -webkit-align-items: center;
+        align-items: center;
+        padding: 2px 0px 1px;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        background-color: transparent;
+        position: relative;
+        -webkit-box-sizing: content-box;
+        box-sizing: content-box;
+        min-width: 64px;
+        min-height: 26px;
+        -webkit-box-flex: 1;
+        -webkit-flex-grow: 1;
+        -webkit-box-flex: 1;
+        box-flex: 1;
+        -webkit-flex-grow: 1;
+        flex-grow: 1;
+        border-bottom-color: rgba(0, 0, 0, 0.12);
+        width: 100px;
+        margin-left: 4px;
+        margin-top: -7px;
+        margin-bottom: 20px;
+      }
+      :host span.text {
+        max-width: 100%;
+        -webkit-box-flex: 1;
+        flex: 1 1 auto;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        padding-bottom: 1px;
+        flex-shrink: 1;
+      }
+      :host span.text > div {
+        display: inline;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        vertical-align: baseline;
+        font-size: 15px;
+        font-weight: 300;
+        color: #00a2df;
+        cursor: pointer;
+        font-family: 'Roboto', sans-serif;
+      }
+      :host section.en span.text > div {
+        font-family: 'Roboto', sans-serif;
+      }
+      :host section.ja span.text > div {
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: 300;
+      }
+      :host span.text > div {
+        text-transform: capitalize;
+      }
+      :host span.icon {
+        display: block;
+        -webkit-box-align: end;
+        -webkit-align-items: flex-end;
+        -webkit-align-items: flex-end;
+        align-items: flex-end;
+        text-align: end;
+        height: 19px;
+        margin: 0 4px;
+        -webkit-transform: translate3d(0, -2px, 0);
+        -webkit-transform: translate3d(0, -2px, 0);
+        transform: translate3d(0, -2px, 0);
+        font-size: 1.2rem;
+        fill: #00a2df;
+        cursor: pointer;
+      }
+      :host #menu {
+        display: none;
+        position: fixed;
+        opacity: 1;
+        -webkit-transform: translateY(31px);
+        -webkit-transform: translateY(31px);
+        transform: translateY(31px);
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        z-index: 120;
+        min-width: 64px;
+        min-height: 100px;
+        width: 100px;
+      }
+      :host #menu > div {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+        max-height: 256px;
+        min-height: 48px;
+        overflow-y: hidden;
+        -webkit-transform-origin: left top;
+        -webkit-transform-origin: left top;
+        transform-origin: left top;
+        -webkit-transform: scale(1);
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        background: #fff;
+      }
+      :host #menu > div > div {
+        color: rgba(0, 0, 0, 0.54);
+        cursor: pointer;
+        position: relative;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -webkit-align-items: center;
+        align-items: center;
+        width: auto;
+        padding: 0 16px 0 16px;
+        height: 36px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+        font-size: 15px;
+        text-transform: capitalize;
+      }
+      :host section.en #menu > div > div {
+        font-family: 'Roboto', sans-serif;
+      }
+      :host section.ja #menu > div > div {
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: 300;
+      }
+      :host span.text > div {
+        text-transform: capitalize;
+      }
+      :host #menu > div > div.selected {
+        color: #00a2df;
+        cursor: default;
+      }
+      :host #menu > div > div:hover {
+        background: rgb(238,238,238);
+      }
+      :host #menu > div > div.selected:hover {
+        background: #fff;
+      }      
+      @media only screen and (max-width: 840px) {  
+      }
+    </style>
+    <section class="en">
+      <h2 class="en">Language</h2>
+      <h2 class="ja">言語</h2>
+      <div class="selector" on-click="select">
+        <span class="text">
+          <div id="current-language"></div>
+        </span>
+        <span class="icon" aria-hidden="true">
+          <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+        </span>
+        <div id="menu">
+          <div id="language"></div>
+        </div>
+      </div>
+    </section>
+  </template>
+  <script>
+    /**
+     * `side-language-element`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class SideLanguageElement extends Polymer.Element {
+      static get is() { return 'side-language-element'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'side-language-element'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(SideLanguageElement.is, SideLanguageElement);
+  </script>
+</dom-module>

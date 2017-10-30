@@ -1,0 +1,76 @@
+<link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
+
+<dom-module id="side-related-content-element">
+  <template>
+    <style>
+      :host * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+      }
+      :host li {
+        height: 20px;
+        margin-bottom: 10px;
+        margin-top: 0px;
+        transform: var(--koheishingai-side-related-content-transform, translateY(-6px));
+      }
+      :host li  h3 {
+        display: inline-block;
+        position: relative;
+        margin: 0 auto;
+        min-width: 20px;
+        min-height: 20px;
+        margin-left: 4px;
+        margin-right: 16px;
+        letter-spacing: 1px;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 300;
+        border-left: 2px solid transparent;
+        -webkit-box-sizing: border-box;
+        white-space: nowrap;
+        cursor: pointer;
+        outline: none;
+        -webkit-user-select: none;
+        color: #00a2df;
+        font-family: 'Roboto', sans-serif;
+      }
+      :host li.en h3 {
+        font-family: 'Roboto', sans-serif;
+      }
+      :host li.ja h3 {
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: 300;
+      }
+      :host li h3:first-letter {
+        text-transform: capitalize;
+      }
+      @media only screen and (max-width: 840px) {  
+      }
+    </style>
+    <li class="en"><a><h3>Something</h3></a></li>
+  </template>
+  <script>
+    /**
+     * `side-related-content-element`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class SideRelatedContentElement extends Polymer.Element {
+      static get is() { return 'side-related-content-element'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'side-related-content-element'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(SideRelatedContentElement.is, SideRelatedContentElement);
+  </script>
+</dom-module>

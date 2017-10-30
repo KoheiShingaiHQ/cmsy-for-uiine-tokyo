@@ -1,0 +1,58 @@
+<link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/polymer/contents-full-element.html">
+<link rel="import" href="/polymer/contents-half-element.html">
+
+<dom-module id="featured-element">
+  <template>
+    <style>
+      :host * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+      }
+      :host main {
+        position: relative;
+        top: 64px;
+        margin: 0 auto;
+        margin-top: 12px;
+        margin-bottom: 64px;
+        max-width: 2560px;
+        padding: 0px 12px;
+        opacity: .93;
+      }
+      @media only screen and (max-width: 840px) {
+        :host main {
+          padding: 0px;
+          margin-top: 0px;
+        }
+      }
+    </style>
+    <main>
+      <contents-full-element></contents-full-element>
+      <contents-half-element></contents-half-element>
+    </main>
+  </template>
+  <script>
+    /**
+     * `featured-element`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class FeaturedElement extends Polymer.Element {
+      static get is() { return 'featured-element'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'featured-element'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(FeaturedElement.is, FeaturedElement);
+  </script>
+</dom-module>

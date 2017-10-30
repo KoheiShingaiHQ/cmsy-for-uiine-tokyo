@@ -1,0 +1,77 @@
+<link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/polymer/content-element.html">
+
+<dom-module id="contents-full-element">
+  <template>
+    <style>
+      :host * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+      }
+      :host ul {
+        margin: 0;
+        padding: 0;
+        position: relative;
+        list-style-type: none;
+        overflow: hidden;
+      }
+      :host section li {
+        background: #fafafa;
+        border-bottom: 12px solid #fff;
+        width: 100%;
+        cursor: pointer;
+        min-height: 300px;
+      }
+      :host li > div > div {
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50%;
+      }
+      :host li > img {
+        display: none;
+      }
+    </style>
+    <section>
+      <section>
+        <ul>
+          <template is="dom-repeat" items="{{contents}}">
+
+              <li>
+                <div>
+                  <content-element full_main="{{item.main}}" full_sub="{{item.sub}}"></content-element>
+                  <div></div>
+                </div>
+              </li>
+
+          </template>
+        </ul>
+      </section>
+    </section>
+  </template>
+
+  <script>
+    /**
+     * `contents-full-element`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class ContentsFullElement extends Polymer.Element {
+      static get is() { return 'contents-full-element'; }
+      constructor() {
+        super();
+        this.contents = [
+          {main: "Article 1", sub: 'Something about this article 1'},
+          {main: "Article 2", sub: 'Something about this article 2'},
+          {main: "Article 3", sub: 'Something about this article 3'},
+        ];
+      }
+    }
+    window.customElements.define(ContentsFullElement.is, ContentsFullElement);
+  </script>
+</dom-module>

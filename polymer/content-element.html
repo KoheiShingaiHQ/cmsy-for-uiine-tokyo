@@ -1,0 +1,131 @@
+<link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
+
+<dom-module id="content-element">
+  <template>
+    <style>
+      :host * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+      }
+      :host > div {
+        z-index: 1;
+        -webkit-box-flex: 0;
+        -webkit-flex-grow: 0;
+        -ms-flex-positive: 0;
+        flex-grow: 0;
+        padding-top: 65px;
+        color: #787878;
+        text-align: center;
+        width: 100%;
+      }
+      :host > div > h2 {
+        margin: 0;
+        padding: 0;
+        font-size: 56px;
+        line-height: 1.07143;
+        font-weight: 600;
+        letter-spacing: -.005em;
+        font-family: 'Roboto', sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      :host > div > h3 {
+        font-size: 27px;
+        line-height: 1.14815;
+        font-weight: 400;
+        letter-spacing: .008em;
+        margin-top: 6px;
+        font-family: 'Roboto', sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      :host > div > h4 {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        margin-top: -27px;
+        font-size: 48px;
+        line-height: 1.08365;
+        font-weight: 600;
+        letter-spacing: -.003em;
+        font-family: 'Roboto', sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      :host > div > h5 {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        margin-top: 0.2em;
+        font-size: 24px;
+        line-height: 1.16667;
+        font-weight: 400;
+        letter-spacing: .009em;
+        font-family: 'Roboto', sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      @media only screen and (max-width: 840px) {
+        :host > div {
+          padding-top: 39px;
+        }
+        :host > div > h2, :host > div > h4 {
+          font-size: 32px;
+          line-height: 1.125;
+          font-weight: 600;
+          letter-spacing: .004em;
+        }
+        :host > div > h4 {
+          margin-top: -16px;
+          width: 100%;
+        }
+        :host > div > h3, :host > div > h5 {
+          width: 100%;
+          font-size: 19px;
+          line-height: 1.42115;
+          font-weight: 400;
+          letter-spacing: .012em;
+        }
+      }
+    </style>
+      <div>
+        <h2>{{full_main}}</h2>
+        <h3>{{full_sub}}</h3>
+        <h4>{{half_main}}</h4>
+        <h5>{{half_sub}}</h5>																 
+      </div>
+  </template>
+
+  <script>
+    /**
+     * `content-element`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class ContentElement extends Polymer.Element {
+      static get is() { return 'content-element'; }
+      static get properties() {
+        return {
+          full_main: {
+            type: String,
+            value: ''
+          },
+          full_sub: {
+            type: String,
+            value: ''
+          },
+          half_main: {
+            type: String,
+            value: ''
+          },
+          half_sub: {
+            type: String,
+            value: ''
+          }
+        };
+      }
+    }
+
+    window.customElements.define(ContentElement.is, ContentElement);
+  </script>
+</dom-module>

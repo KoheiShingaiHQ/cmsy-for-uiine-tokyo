@@ -1,0 +1,271 @@
+<link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
+
+<dom-module id="content-github-element">
+  <template>
+    <style>
+      :host * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+      }
+      :host section {
+        padding: 12px 26px;
+        width: 100%;
+      }
+      :host section.related {
+        height: 0px;
+      }
+      :host section.related.show {
+        height: auto;
+      }
+      :host section.child {
+        padding: 0px;
+        margin-top: 25px;
+        border-left: 2px dashed #d6d6d6;
+        padding-left: 21px;
+        width: 100%;
+        padding-top: 2px;
+        padding-bottom: 15px;
+        background: #fff;
+        display: none;
+        margin-bottom: 18px;
+      }
+      :host .show > section.child {
+        display: block;
+      }
+      :host section.child pre {
+        width: calc(100% - 21px);
+      }
+      :host h1, :host h2, :host h3, :host h4, :host h5, :host h6 {
+        margin-top: 24px;
+        margin-bottom: 16px;
+        font-weight: 600;
+        line-height: 1.25;
+        color: rgba(0, 0, 0, 0.45);
+      }
+      :host .en h1, :host .en h2, :host .en h3, :host .en h4, :host .en h5, :host .en h6 {
+        font-family: "Roboto", sans-serif;
+        font-weight: 200;
+      }
+      :host .ja h1, :host .ja h2, :host .ja h3, :host .ja h4, :host .ja h5, :host .ja h6 {
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: 300;
+      }
+      :host p {
+        margin-bottom: 0px;
+        font-weight: 300;
+        color: #6f6f6f;
+      }
+      :host .en p {
+        font-family: "Roboto", sans-serif;
+        font-size: 17px;
+      }
+      :host .ja p {
+        font-size: 16px;
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: 300;
+      }
+      :host h1 {
+        padding-bottom: 0.3em;
+        margin-top: 5px;
+      }
+      :host .en h1 {
+        font-size: 32px;
+        border-bottom: 1px dashed #eaecef;
+      }
+      :host .ja h1 {
+        font-size: 30px;
+        border-bottom: 1px dashed #eaecef;
+      }
+      :host h2 {
+        padding-bottom: 0.3em;
+        margin-top: 28px;
+        margin-bottom: 6px;
+      }
+      :host .en h2 {
+        font-size: 27px;
+        margin-top: 28px;
+      }
+      :host .ja h2 {
+        padding-bottom: 0.3em;
+        font-size: 25px;
+      }
+      :host h3.repository {
+        position: absolute;
+        right: 70px;
+        transform: translateY(5px);
+        color: #00a2df;
+      }
+      :host .en h3.repository {
+        font-size: 20px;
+      }
+      :host .ja h3.repository {
+        font-size: 15px;
+      }
+      :host .en .ja.repository,
+      :host .ja .en.repository {
+        display: none;
+      }
+      :host h3 {
+        padding-bottom: 0.3em;
+        margin-top: 28px;
+        margin-bottom: 6px;
+      }
+      :host .en h3 {
+        font-size: 23px;
+      }
+      :host .ja h3 {
+        font-size: 21px;
+      }
+      :host .en h3.switch {
+        font-size: 16.5px;
+        color: #FFA955;
+        cursor: pointer;
+        margin-top: 4px;
+      }
+      :host .en h3.switch:before {
+        content: "+";
+        margin-right: 3.5px;
+        margin-left: 0px;
+        font-family: "Roboto", sans-serif;
+      }
+      :host .en h3.switch:nth-last-child(2) {
+        margin-bottom: 29px;
+      } 
+      :host .ja h3.switch:nth-last-child(2) {
+        margin-bottom: 29px;
+      }      
+      :host .ja .show h3.switch:before {
+        content: "-";
+        margin-right: 8px;
+        margin-left: 0px;
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: 300;
+      }
+      :host .ja h3.switch {
+        font-size: 15.5px;
+        color: rgb(255, 141, 53);
+        cursor: pointer;
+        margin-top: 4px;
+      }
+      :host .ja h3.switch:before {
+        content: "+";
+        margin-right: 3.5px;
+        margin-left: 0px;
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: 300;
+      }
+      :host .en .show h3.switch:before {
+        content: "-";
+        margin-right: 8px;
+        margin-left: 0px;
+        font-family: "Roboto", sans-serif;
+      }
+      :host blockquote {
+        padding: 0 11px;
+        margin-left: 1px;
+        margin-right: 0px;
+        color: #6a737d;
+        border-left: 2.5px solid rgb(224, 224, 224);
+        font-weight: 300;
+      }
+      :host .en blockquote {
+        font-family: "Roboto", sans-serif;
+        font-size: 20px;
+      }
+      :host .ja blockquote {
+        font-family: 'Noto Sans JP', sans-serif;
+        font-size: 16px;
+      }
+      :host a {
+        color: #00a2df;
+        text-decoration: none;
+      }
+      :host a:hover {
+        text-decoration: underline;
+      }
+      :host pre {
+        padding: 16.5px;
+        overflow: auto;
+        font-size: 120%;
+        line-height: 1.35;
+        background-color: #f8f8f8;
+        margin-bottom: 0;
+        word-break: normal;
+        margin-top: 0px;
+        color: #545454;
+      }
+      :host pre + pre {
+        margin-top: 8px;
+      }
+      :host code .hljs-comment {
+        opacity: .5;
+      }
+      :host .ja code .hljs-comment {
+        font-size: 82%;
+      }
+      :host p > code {
+        padding: 0;
+        padding-top: 0.2em;
+        padding-bottom: 0.2em;
+        margin: 0;
+        font-size: 85%;
+        background-color: rgba(27,31,35,0.05);
+        color: #545454;
+      }
+      :host p > code:before, :host p > code:after {
+        letter-spacing: -0.2em;
+        content: "\00a0";
+      }
+      :host img {
+        width: 100%;
+        outline: 1px solid #e6e6e6;
+      }
+      @media only screen and (max-width: 840px) {
+        :host section {
+          padding: 12px 12px;
+        }
+        :host .en h1 {
+          font-size: 26px;
+        }        
+        :host .ja h1 {
+          font-size: 24px;
+        }
+        :host h3.repository {
+          display: none;
+        }
+      }
+    </style>
+    <section class="en">
+      <a target="_blank" href="https://github.com">
+        <h3 class="en repository">See Repository</h3>
+        <h3 class="ja repository">リポジトリを見る</h3>
+      </a>
+      <section id="section"></section>
+      <section id="related" class="related"></section>
+    </section>
+  </template>
+  <script>
+    /**
+     * `content-github-element`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class ContentGithubElement extends Polymer.Element {
+      static get is() { return 'content-github-element'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'content-github-element'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(ContentGithubElement.is, ContentGithubElement);
+  </script>
+</dom-module>

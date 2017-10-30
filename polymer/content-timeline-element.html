@@ -1,0 +1,216 @@
+<link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
+
+<dom-module id="content-timeline-element">
+  <template>
+    <style>
+      :host * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+      }
+      :host section {
+        padding: 12px 26px;
+        width: 100%;
+      }
+      :host section time {
+        display: block;
+        padding-right: 100px;
+        position: absolute;
+      }
+      :host section time span {
+        display: block;
+        text-align: right;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 200;
+      }
+      :host section.en time span {
+        font-family: 'Roboto', sans-serif;
+      }
+      :host section.ja time span {
+        font-family: 'Noto Sans JP', sans-serif;
+      }
+      :host section time span:first-child {
+        font-size: 0.9em;
+        color: #bdd0db;
+      }
+      :host section time span:last-child {
+        font-size: 2.3em;
+        color: #6cbfee;
+      }
+      :host section.ja span:last-child {
+        font-size: 2em;
+      }
+      :host section .line {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        font-family: 'ecoico';
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        font-size: 1.4em;
+        line-height: 40px;
+        -webkit-font-smoothing: antialiased;
+        color: #fff;
+        background: #46a4da;
+        border-radius: 50%;
+        box-shadow: 0 0 0 8px #afdcf8;
+        text-align: center;
+        margin-left: 128px;
+        margin-top: 9px;
+      }
+      :host section .line:before {
+        content: '';
+        position: absolute;
+        width: 10px;
+        background: #afdcf8;
+        height: var(--koheishingai-content-timeline-line-before-height, 1000%);
+        margin-top: 47px;
+        margin-left: -5px;
+      }
+      :host section .content {
+        background: #6cbfee;
+        margin: 10px 0 0 199px;
+        color: #fff;
+        padding: 2em;
+        font-size: 1.2em;
+        font-weight: 300;
+        line-height: 1.4;
+        position: relative;
+        padding-bottom: 34px;
+        cursor: pointer;
+        text-align: left;
+      }
+      :host section .content:hover {
+        opacity: .8;
+      }
+      :host section .content:after {
+        right: 100%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-right-color: #6cbfee;
+        border-width: 10px;
+        top: 10px;
+      }
+      :host section a {
+        text-decoration: none;
+      }
+      :host section .content h2 {
+        margin-top: 0px;
+        padding: 0 0 10px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.4);
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+      }
+      :host section.en .content p {
+        font-size: 22px;
+      }
+      :host section.ja .content p {
+        font-size: 20px;
+      }      
+      :host section.en .content h2, :host section.en .content p {
+        font-family: 'Roboto', sans-serif;
+      }
+      :host section.ja .content h2, :host section.ja .content p {
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: 300;
+      }
+      :host section .content p {
+        margin-bottom: 0px;
+      }
+      :host section .content img {
+        max-height: 210px;
+        border: 1px solid rgba(255, 255, 255, 0.57);
+        margin-top: 12px;
+        max-width: 100%;
+      }
+      @media only screen and (max-width: 840px) {
+        :host section time {
+          position: relative;
+          width: 100%;
+          padding: 0px;
+        }
+        :host section time span:first-child {
+          font-size: 1.5em;
+          float: left;
+          text-align: left;
+        }
+        :host section.en time span:first-child {
+          font-size: 1em;
+          margin-top: 6px;
+        }
+        :host section time span:last-child {
+          font-size: 1.5em;
+          text-align: left;
+          text-indent: 2px;
+        }
+        :host section.en time span:last-child {
+          text-indent: 3px;
+        }
+        :host section .line:before, :host section .line {
+          display: none;
+        }
+        :host section .content {
+          margin: 0;
+        }
+        :host section .content:after {
+          display: none;
+        }
+        :host section.en .content h2 {
+          font-size: 24px;
+        }
+        :host section.ja .content h2 {
+          font-size: 22px;
+        }
+        :host section.en .content p {
+          font-size: 19px;
+        }
+        :host section.ja .content p {
+          font-size: 17px;
+        }
+      }
+    </style>
+    <section class="en">
+      <time class="cbp_tmtime" datetime$="2017-09-01 00:00:00">
+        <span>2017</span>
+        <span>Sep 1</span>
+      </time>
+      <div class="line"></div>
+      <a>
+        <div class="content">
+          <h2>Something</h2>
+          <p>Something about timeline.</p>
+        </div>
+      </a>
+    </section>
+  </template>
+  <script>
+    /**
+     * `content-timeline-element`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class ContentTimelineElement extends Polymer.Element {
+      static get is() { return 'content-timeline-element'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'content-timeline-element'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(ContentTimelineElement.is, ContentTimelineElement);
+  </script>
+</dom-module>

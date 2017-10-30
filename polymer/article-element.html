@@ -1,0 +1,57 @@
+<link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/polymer/content-panel-element.html">
+<link rel="import" href="/polymer/side-panel-element.html">
+
+<dom-module id="article-element">
+  <template>
+    <style>
+      :host * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+      }
+      :host main {
+        position: static;
+        top: 64px;
+        margin: 0 auto;
+        margin-top: 64px;
+        margin-bottom: 24px;
+        max-width: 2560px;
+        padding: 0px 12px;
+      }
+      @media only screen and (max-width: 840px) {
+        :host main {
+          padding: 0px;
+          margin-top: 0px;
+        }
+      }
+    </style>
+    <main>
+      <content-panel-element></content-panel-element>
+      <side-panel-element></side-panel-element>
+    </main>
+  </template>
+  <script>
+    /**
+     * `article-element`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class ArticleElement extends Polymer.Element {
+      static get is() { return 'article-element'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'article-element'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(ArticleElement.is, ArticleElement);
+  </script>
+</dom-module>

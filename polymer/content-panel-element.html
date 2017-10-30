@@ -1,0 +1,65 @@
+<link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/polymer/article-header-element.html">
+<link rel="import" href="/polymer/content-timeline-element.html">
+<link rel="import" href="/polymer/content-github-element.html">
+
+<dom-module id="content-panel-element">
+  <template>
+    <style>
+      :host * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+      }
+      :host article {
+        top: 0px;
+        left: 0px;
+        width: calc(100% - 256px);
+        height: calc(100% - 151px);
+        margin-top: var(--koheishingai-content-panel-margin-top, 64px);
+        overflow-y: auto;
+        position: var(--koheishingai-content-panel-position, absolute);
+        padding: 12px;
+      }
+      :host article::-webkit-scrollbar {
+        display: none; 
+      }
+      @media only screen and (max-width: 840px) {
+        :host article {
+          width: 100%;
+          padding: 0px;
+        }
+        :host section {
+          padding: 12px 12px;
+        }
+      }
+    </style>
+    <article id="article">
+      <article-header-element></article-header-element>
+      <content-timeline-element></content-timeline-element>
+    </article>
+  </template>
+  <script>
+    /**
+     * `content-panel-element`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class ContentPanelElement extends Polymer.Element {
+      static get is() { return 'content-panel-element'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'content-panel-element'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(ContentPanelElement.is, ContentPanelElement);
+  </script>
+</dom-module>

@@ -1,0 +1,96 @@
+<link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
+
+<dom-module id="content-label-element">
+  <template>
+    <style>
+      :host * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+      }
+      :host > div {
+        position: var(--koheishingai-label-position, absolute);
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        z-index: 1;
+        padding: 12px;
+        -webkit-box-flex: 0;
+        -webkit-flex-grow: 0;
+        -ms-flex-positive: 0;
+        flex-grow: 0;
+        padding-top: 65px;
+        padding-bottom: 10px;
+        color: #fff;
+        text-align: left;
+        background-image: -webkit-linear-gradient(bottom,rgba(0,0,0,.4) 0,transparent 100%);
+        background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0,rgba(0,0,0,.4)),color-stop(100%,transparent));
+        background-image: linear-gradient(to top,rgba(0,0,0,.4) 0,transparent 100%);
+      }
+      :host > div > h2 {
+        font-weight: 300;
+        font-size: 27px;
+        line-height: 1.2em;
+        margin: 0px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        font-family: 'Roboto', sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      :host > div > h3 {
+        margin: 0px;
+        display: block;
+        font-size: 15px;
+        font-weight: 300;
+        line-height: 1.4em;
+        font-family: 'Roboto', sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      @media only screen and (max-width: 840px) {
+      }
+    </style>
+    <div>
+      <h2>{{main}}</h2>
+      <h3>{{sub}}</h3>
+    </div>
+  </template>
+
+  <script>
+    /**
+     * `content-label-element`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class ContentLabelElement extends Polymer.Element {
+      static get is() { return 'content-label-element'; }
+      static get properties() {
+        return {
+          full_main: {
+            type: String,
+            value: ''
+          },
+          full_sub: {
+            type: String,
+            value: ''
+          },
+          half_main: {
+            type: String,
+            value: ''
+          },
+          half_sub: {
+            type: String,
+            value: ''
+          }
+        };
+      }
+    }
+
+    window.customElements.define(ContentLabelElement.is, ContentLabelElement);
+  </script>
+</dom-module>

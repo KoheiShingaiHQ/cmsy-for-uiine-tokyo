@@ -1,0 +1,111 @@
+<link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/polymer/content-label-element.html">
+
+<dom-module id="contents-square-element">
+  <template>
+    <style>
+      :host * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+      }
+      :host ul {
+        margin: 2px 2px;
+        padding: 0;
+        position: relative;
+        list-style-type: none;
+        overflow: hidden;
+      }
+      :host section li {
+        float: left;
+        display: block;
+        width: calc(100%*(1/3) - 5.4px);
+        overflow: visible;
+        background: #fafafa;
+        cursor: pointer;
+        margin-left: 8px;
+        margin-bottom: 8px;
+      }
+      :host section li:nth-child(3n - 2) {
+        margin-left: 0px;
+      }
+      :host li > div {
+        position: relative;
+        width: 100%;
+        padding-top: 100%;
+        overflow: hidden;
+        vertical-align: bottom;
+        background-color: #fafafa;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        background-position: 50%;
+        z-index: 1;
+      }
+      :host li > div:hover {
+        opacity: .9;
+      }
+      :host li > div > a {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+      }
+      @media only screen and (max-width: 840px) {
+        :host section ul {
+          margin: 0px;
+        }
+        :host section li {
+          width: 100%;
+          border-left: none !important;
+          border-right: none !important;
+          margin-left: 0px;
+          margin-right: 0px;
+        }
+        :host section li:nth-last-child(2) {
+          margin-bottom: 0px;
+        }
+      }
+    </style>
+    <section>
+      <ul>
+        <template is="dom-repeat" items="{{contents}}">
+          <li>
+            <div>
+              <content-label-element main="{{item.main}}" sub="{{item.sub}}"></content-label-element>
+            </div>
+          </li>
+        </template>
+      </ul>
+    </section>  
+  </template>
+
+  <script>
+    /**
+     * `contents-square-element`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class ContentsSquareElement extends Polymer.Element {
+      static get is() { return 'contents-square-element'; }
+      constructor() {
+        super();
+        this.contents = [
+          {main: "Square article 1", sub: 'Something about this square article 1'},
+          {main: "Square article 2", sub: 'Something about this square article 2'},
+          {main: "Square article 3", sub: 'Something about this square article 3'},
+          {main: "Square article 4", sub: 'Something about this square article 4'},
+          {main: "Square article 5", sub: 'Something about this square article 5'},
+          {main: "Square article 6", sub: 'Something about this square article 6'},
+          {main: "Square article 7", sub: 'Something about this square article 7'},
+          {main: "Square article 8", sub: 'Something about this square article 8'},
+          {main: "Square article 9", sub: 'Something about this square article 9'},
+        ];
+      }
+    }
+    window.customElements.define(ContentsSquareElement.is, ContentsSquareElement);
+  </script>
+</dom-module>
