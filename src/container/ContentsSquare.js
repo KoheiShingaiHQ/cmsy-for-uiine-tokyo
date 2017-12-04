@@ -9,22 +9,45 @@ class ContentsSquare extends Component {
   componentDidMount() {
     var contents = [];
     var data = this.props.data;
+    data.sort(function(a,b){
+      if(a.order < b.order) return -1;
+      if(a.order > b.order) return 1;
+      return 0;
+    });
     for(var i in data){
-      var hrefInsta, href;
+      var hrefWiki, href;
       var targetInsta, target;
-      var main;
-      if (data[i].href) {
-        hrefInsta = (data[i].href.indexOf("/") !== -1) ? "https://www.instagram.com/p" + data[i].href : "https://www.instagram.com/p/" + data[i].href;
+      var display = "block";
+      if (data[i].wiki) {
+        hrefWiki = "https://en.wikipedia.org/wiki/" + data[i].wiki;
         href = (data[i].href.indexOf("/") !== -1) ? "#/article" + data[i].href : "#/";
+      } else {
+        hrefWiki = "";
+        display = "none";
+        href = (data[i].href.indexOf("/") !== -1) ? "#/article" + data[i].href : "#/";
+      }
+      if (data[i].category) {
+        var categories = data[i].category.split("_").join(" : ");
+        document.getElementById("main-title").innerText = "Mauth : " + categories;
       }
       contents.push(
         <li key={data[i].image}>
-          <a href={hrefInsta} target="_blank">
-            <svg style={{position:"absolute",zIndex:2,marginTop:"5px",marginLeft:"5px",opacity:.98}} aria-hidden="true" x="0px" y="0px" width="32px" height="32px" viewBox="0 0 169.063 169.063" fill="#fff"><g><path d="M122.406,0H46.654C20.929,0,0,20.93,0,46.655v75.752c0,25.726,20.929,46.655,46.654,46.655h75.752   c25.727,0,46.656-20.93,46.656-46.655V46.655C169.063,20.93,148.133,0,122.406,0z M154.063,122.407   c0,17.455-14.201,31.655-31.656,31.655H46.654C29.2,154.063,15,139.862,15,122.407V46.655C15,29.201,29.2,15,46.654,15h75.752   c17.455,0,31.656,14.201,31.656,31.655V122.407z"></path><path d="M84.531,40.97c-24.021,0-43.563,19.542-43.563,43.563c0,24.02,19.542,43.561,43.563,43.561s43.563-19.541,43.563-43.561   C128.094,60.512,108.552,40.97,84.531,40.97z M84.531,113.093c-15.749,0-28.563-12.812-28.563-28.561   c0-15.75,12.813-28.563,28.563-28.563s28.563,12.813,28.563,28.563C113.094,100.281,100.28,113.093,84.531,113.093z"></path><path d="M129.921,28.251c-2.89,0-5.729,1.17-7.77,3.22c-2.051,2.04-3.23,4.88-3.23,7.78c0,2.891,1.18,5.73,3.23,7.78   c2.04,2.04,4.88,3.22,7.77,3.22c2.9,0,5.73-1.18,7.78-3.22c2.05-2.05,3.22-4.89,3.22-7.78c0-2.9-1.17-5.74-3.22-7.78   C135.661,29.421,132.821,28.251,129.921,28.251z"></path></g></svg>
+          <a href={hrefWiki} target="_blank" style={{display:display}}>
+            <svg style={{position:"absolute",zIndex:2,marginTop:"5px",marginLeft:"5px",opacity:.6,fill:(data[i].color) ? data[i].color : "#262626"}} aria-hidden="true" width="32px" height="32px" viewBox="0 0 485 485" x="0px" y="0px" viewBox="0 0 458.723 458.723">
+              <path d="M455.724,93.489H367.32h-3v3v9.613v3h3h6.143c7.145,0,13.588,3.667,17.237,9.81
+                c3.648,6.143,3.786,13.555,0.368,19.829l-98.3,180.432l-44.769-106.727l42.169-77.382c8.727-16.014,25.477-25.962,43.714-25.962
+                h1.992h3v-3v-9.613v-3h-3H247.47h-3v3v9.613v3h3h6.143c7.145,0,13.588,3.667,17.237,9.81c3.648,6.143,3.786,13.555,0.368,19.829
+                l-30.587,56.143L213.372,129.9c-1.976-4.71-1.487-9.852,1.341-14.105s7.38-6.693,12.488-6.693h6.988h3v-3v-9.613v-3h-3H128.46h-3v3
+                v9.613v3h3h1.454c20.857,0,39.546,12.428,47.615,31.661l40.277,96.018l-44.887,82.392L93.523,129.9
+                c-1.976-4.71-1.487-9.852,1.341-14.105s7.38-6.693,12.488-6.693h10.737h3v-3v-9.613v-3h-3H3H0v3v9.613v3h3h7.064
+                c20.857,0,39.547,12.428,47.615,31.661l91.526,218.191c1.601,3.816,5.313,6.282,9.458,6.282c3.804,0,7.163-1.998,8.986-5.344
+                l11.939-21.91l45.582-83.646l43.884,104.617c1.601,3.816,5.313,6.282,9.458,6.282c3.804,0,7.163-1.998,8.986-5.344l11.939-21.91
+                l110.58-202.919c8.727-16.014,25.477-25.962,43.714-25.962h1.992h3v-3v-9.613v-3h-2.999L455.724,93.489L455.724,93.489z"/>
+            </svg>
           </a>
           <a href={href}>
             <div style={{backgroundImage:"url("+ data[i].image +")", backgroundSize:data[i].size}}>
-              <ContentLabel main={data[i].main} sub={data[i].sub}></ContentLabel>
+              <ContentLabel main={data[i].order + " " + data[i].main} sub={data[i].sub}></ContentLabel>
             </div>
           </a>
         </li>

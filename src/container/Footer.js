@@ -18,7 +18,7 @@ class Footer extends Component {
           <section>  
             <div className="links">
               <ul>
-                <a href="https://www.instagram.com/uiine.tokyo/" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/mauth.official/" target="_blank" rel="noopener noreferrer">
                   <li>
                     <svg aria-hidden="true" className="octicon octicon-mark-instagram" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 169.063 169.063" style={{enableBackground:"new 0 0 169.063 169.063"}}>
                       <g>

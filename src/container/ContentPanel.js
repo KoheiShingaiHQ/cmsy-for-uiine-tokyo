@@ -54,7 +54,7 @@ class ContentPanel extends Component {
           var props = {};
           props["file"] = "readme/" + id;
           props["post"] = "https://www.instagram.com/p/" + id + "/";
-          props["project"] = "cmsy-for-uiine-tokyo-writer";
+          props["project"] = "mauth";
           props["user"] = "koheishingaiHQ";
           props["id"] = contentTag.id;
           props["language"] = language;

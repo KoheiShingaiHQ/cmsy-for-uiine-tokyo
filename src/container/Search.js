@@ -31,7 +31,7 @@ class Nav extends Component {
   _handleKeyPress(e) {
     if (e.key === 'Enter') {
       var word = document.getElementById("search-input").value;
-      window.open('https://www.instagram.com/explore/tags/' + word, '_blank');
+      window.open('https://en.wikipedia.org/wiki/' + word, '_blank');
     }
   }
   render() {

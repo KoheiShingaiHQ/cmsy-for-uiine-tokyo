@@ -616,16 +616,20 @@ main
           h1, h2, h3, h4, h5, h6
             font-family: 'Noto Sans JP', sans-serif
             font-weight: 300
-        p
+        ul
+          margin-top: 12px
+          padding-bottom: 6px
+          padding-left: 28px
+        p, li
           margin-bottom: 0px
           font-weight: 300
           color: #6f6f6f
         &.en 
-          p
+          p, li
             font-family: "Roboto", sans-serif
             font-size: 17px
         &.ja 
-          p
+          p, li
             font-size: 16px
             font-family: 'Noto Sans JP', sans-serif
             font-weight: 300
@@ -1005,8 +1009,6 @@ main
             -webkit-user-select: none
             color: #3897f0
             font-family: 'Roboto', sans-serif
-            &:first-letter
-              text-transform: capitalize
           &.en h3
             font-family: 'Roboto', sans-serif
           &.ja h3

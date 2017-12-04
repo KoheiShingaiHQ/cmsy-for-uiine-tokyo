@@ -13,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header title="Gram"></Header>
+        <Header title="Mauth"></Header>
         <Route exact path={path.list} component={About} />
         <Route exact path={path.featured} component={About} />
         <Route exact path={path.detail} component={Article} />

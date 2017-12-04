@@ -32,9 +32,9 @@ class Header extends Component {
         const type = val.type.value;
         const name = val.name.value;
         if (type == "user") {
-          document.getElementById("main-title").innerText = "Gram : user : " + name;
+          //document.getElementById("main-title").innerText = "Gram : user : " + name;
         } else {
-          document.getElementById("main-title").innerText = "Gram : hash : " + name;
+          //document.getElementById("main-title").innerText = "Gram : hash : " + name;
         }
       }
     });

@@ -106,16 +106,22 @@ class ContentGithub extends Component {
   render() {
     return (
       <section className={"content-github " + this.props.language}>
-        { (!this.props.post) ? 
-          <a target="_blank" href={this.state.link}>
-            <h3 className="en repository">See Repository</h3>
-            <h3 className="ja repository">リポジトリを見る</h3>
-          </a> :
-          <a target="_blank" href={this.props.post}>
-            <h3 className="en repository">See on Instagram</h3>
-            <h3 className="ja repository">Instagramで見る</h3>
-          </a>
-        }
+          <a href="#/">
+            <h3 className="en ja repository" style={{width:"28px",marginTop:"19px",display:"block",opacity:".88"}}>
+              <svg x="0px" y="0px" viewBox="0 0 512.001 512.001" fill="#3897f0">
+                <g>
+                  <g>
+                    <path d="M384.834,180.699c-0.698,0-348.733,0-348.733,0l73.326-82.187c4.755-5.33,4.289-13.505-1.041-18.26
+                      c-5.328-4.754-13.505-4.29-18.26,1.041l-82.582,92.56c-10.059,11.278-10.058,28.282,0.001,39.557l82.582,92.561
+                      c2.556,2.865,6.097,4.323,9.654,4.323c3.064,0,6.139-1.083,8.606-3.282c5.33-4.755,5.795-12.93,1.041-18.26l-73.326-82.188
+                      c0,0,348.034,0,348.733,0c55.858,0,101.3,45.444,101.3,101.3s-45.443,101.3-101.3,101.3h-61.58
+                      c-7.143,0-12.933,5.791-12.933,12.933c0,7.142,5.79,12.933,12.933,12.933h61.58c70.12,0,127.166-57.046,127.166-127.166
+                      C512,237.745,454.954,180.699,384.834,180.699z"/>
+                  </g>
+                </g>
+              </svg>
+            </h3>
+          </a> 
         <section id={"section-" + this.props.id}></section>
         { (this.props.capture) ?
           <iframe title={this.props.capture} src={"https://asciinema.org/a/"+ this.props.capture +"/embed?"} id={"asciicast-iframe-" + this.props.capture} name={"asciicast-iframe-" + this.props.capture} scrolling="no" allowFullScreen="true"></iframe> :
